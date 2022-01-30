@@ -39,22 +39,52 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ProductOverview()),
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Herb Basil",
+                      ),
+                    ),
                   );
                 },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Basil",
+                productName: "Herb Basil",
               ),
               SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Herb Mint",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Mint",
+                productName: "Herb Mint",
               ),
               SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Herb Rose",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Mint",
+                productName: "Herb Rose",
               ),
             ],
           ),
@@ -89,20 +119,55 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             children: [
               SingleProduct(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Fresh Basil",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
                 productName: "Fresh Basil",
               ),
               SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Fresh Mint",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
                 productName: "Fresh Mint",
               ),
               SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Fresh Rose",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Mint",
+                productName: "Fresh Rose",
               ),
             ],
           ),
@@ -112,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   /// TODO Roots
-  Widget _buildRootProduct() {
+  Widget _buildRootProduct(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -137,20 +202,55 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             children: [
               SingleProduct(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Root Basil",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Basil",
+                productName: "Root Basil",
               ),
               SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Root Mint",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Mint",
+                productName: "Root Mint",
               ),
               SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductOverview(
+                        productImage:
+                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                        productName: "Root Rose",
+                      ),
+                    ),
+                  );
+                },
                 productImage:
                     "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Mint",
+                productName: "Root Rose",
               ),
             ],
           ),
@@ -271,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             _buildHerbsProduct(context),
             _buildFreshProduct(context),
-            _buildRootProduct(),
+            _buildRootProduct(context),
           ],
         ),
       ),

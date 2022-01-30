@@ -62,14 +62,13 @@ class _ProductOverviewState extends State<ProductOverview> {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text("Fresh Basil"),
+                    title: Text(widget.productName),
                     subtitle: Text("\$50"),
                   ),
                   Container(
                     height: 250,
                     padding: EdgeInsets.all(40),
-                    child: Image.network(
-                        "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png"),
+                    child: Image.network(widget.productImage ?? ""),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
