@@ -28,14 +28,12 @@ class _SingleProductState extends State<SingleProduct> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: widget.onTap,
                   child: Container(
                     height: 150,
                     padding: EdgeInsets.all(5),
                     width: double.infinity,
-                    child: Image.network(
-                      "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                    ),
+                    child: Image.network(widget.productImage),
                   ),
                 ),
                 Expanded(
@@ -44,11 +42,13 @@ class _SingleProductState extends State<SingleProduct> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Fresh Basil",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            )),
+                        Text(
+                          widget.productName,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         Text("50\$/50 Grams",
                             style: TextStyle(
                               color: Colors.black54,

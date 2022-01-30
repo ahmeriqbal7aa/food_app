@@ -88,7 +88,7 @@ class _SignInState extends State<SignIn> {
                         text: "Sign in with Google",
                         onPressed: () async {
                           await _googleSignUp().then((value) {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => HomeScreen()));

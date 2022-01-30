@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
 import 'package:food_app/screens/home/single_product.dart';
+import 'package:food_app/screens/productOverview/product_overview.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -32,7 +33,31 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(children: [SingleProduct()]),
+          child: Row(
+            children: [
+              SingleProduct(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductOverview()),
+                  );
+                },
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Basil",
+              ),
+              SingleProduct(
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Mint",
+              ),
+              SingleProduct(
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Mint",
+              ),
+            ],
+          ),
         )
       ],
     );
@@ -61,7 +86,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(children: [SingleProduct()]),
+          child: Row(
+            children: [
+              SingleProduct(
+                onTap: () {},
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Basil",
+              ),
+              SingleProduct(
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Mint",
+              ),
+              SingleProduct(
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Mint",
+              ),
+            ],
+          ),
         )
       ],
     );
@@ -90,7 +134,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(children: [SingleProduct()]),
+          child: Row(
+            children: [
+              SingleProduct(
+                onTap: () {},
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Basil",
+              ),
+              SingleProduct(
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Mint",
+              ),
+              SingleProduct(
+                productImage:
+                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
+                productName: "Fresh Mint",
+              ),
+            ],
+          ),
         )
       ],
     );
