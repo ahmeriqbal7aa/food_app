@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/screens/home/home_screen.dart';
+import 'package:food_app/screens/home/my_profile.dart';
 
 class DrawerSide extends StatefulWidget {
   @override
@@ -33,10 +34,10 @@ class _DrawerSideState extends State<DrawerSide> {
                   children: [
                     CircleAvatar(
                       radius: 43.0,
-                      backgroundColor: Colors.white54,
+                      backgroundColor: scaffoldBackgroundColor,
                       child: CircleAvatar(
                         radius: 40.0,
-                        backgroundColor: Colors.yellow,
+                        backgroundColor: primaryColor,
                         backgroundImage: NetworkImage(
                           "https://s3.envato.com/files/328957910/vegi_thumb.png",
                         ),
@@ -72,15 +73,13 @@ class _DrawerSideState extends State<DrawerSide> {
               ),
             ),
             listTile(
-              iconData: Icons.home_outlined,
-              title: "Home",
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ),
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
                 );
               },
+              iconData: Icons.home_outlined,
+              title: "Home",
             ),
             listTile(
               iconData: Icons.shop_outlined,
@@ -88,16 +87,20 @@ class _DrawerSideState extends State<DrawerSide> {
               onTap: () {},
             ),
             listTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MyProfile()),
+                );
+              },
               iconData: Icons.person_outlined,
               title: "My Profile",
-              onTap: () {},
             ),
             listTile(
-                iconData: Icons.notifications_outlined, title: "Notificatio"),
+                iconData: Icons.notifications_outlined, title: "Notification"),
             listTile(iconData: Icons.star_outline, title: "Rating & Review"),
             listTile(
                 iconData: Icons.favorite_outline,
-                title: "Wishlist",
+                title: "WishList",
                 onTap: () {}),
             listTile(iconData: Icons.copy_outlined, title: "Raise a Complaint"),
             listTile(iconData: Icons.format_quote_outlined, title: "FAQs"),
