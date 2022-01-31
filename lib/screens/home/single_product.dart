@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/config/colors.dart';
 
 class SingleProduct extends StatefulWidget {
   final String productImage;
@@ -79,7 +80,7 @@ class _SingleProductState extends State<SingleProduct> {
                                       child: Icon(
                                         Icons.arrow_drop_down,
                                         size: 20.0,
-                                        color: Colors.yellow,
+                                        color: primaryColor,
                                       ),
                                     )
                                   ],
@@ -103,19 +104,19 @@ class _SingleProductState extends State<SingleProduct> {
                                     Icon(
                                       Icons.remove,
                                       size: 15.0,
-                                      color: Color(0xffd0b84c),
+                                      color: primaryColor,
                                     ),
                                     Text(
                                       "1",
                                       style: TextStyle(
-                                        color: Color(0xffd0b84c),
+                                        color: primaryColor,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     Icon(
                                       Icons.add,
                                       size: 15.0,
-                                      color: Color(0xffd0b84c),
+                                      color: primaryColor,
                                     ),
                                   ],
                                 ),

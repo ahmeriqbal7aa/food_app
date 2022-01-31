@@ -3,6 +3,7 @@ import 'package:food_app/config/colors.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
 import 'package:food_app/screens/home/single_product.dart';
 import 'package:food_app/screens/productOverview/product_overview.dart';
+import 'package:food_app/screens/search/search.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -273,7 +274,15 @@ class _HomeScreenState extends State<HomeScreen> {
           CircleAvatar(
             radius: 12,
             backgroundColor: primaryColor,
-            child: Icon(Icons.search, size: 17.0, color: textColor),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Search()),
+                );
+              },
+              icon: Icon(Icons.search, size: 17.0, color: textColor),
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 5.0),
