@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/screens/home/home_screen.dart';
 import 'package:food_app/screens/home/my_profile.dart';
+import 'package:food_app/screens/reviewCart/review_cart.dart';
 
 class DrawerSide extends StatefulWidget {
   @override
@@ -82,9 +83,13 @@ class _DrawerSideState extends State<DrawerSide> {
               title: "Home",
             ),
             listTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ReviewCart()),
+                );
+              },
               iconData: Icons.shop_outlined,
               title: "Review Cart",
-              onTap: () {},
             ),
             listTile(
               onTap: () {

@@ -273,22 +273,22 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           CircleAvatar(
             radius: 12,
-            backgroundColor: primaryColor,
-            child: IconButton(
-              onPressed: () {
+            backgroundColor: Color(0xffd6d382),
+            child: GestureDetector(
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Search()),
                 );
               },
-              icon: Icon(Icons.search, size: 17.0, color: textColor),
+              child: Icon(Icons.search, size: 17.0, color: textColor),
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 5.0),
             child: CircleAvatar(
               radius: 12,
-              backgroundColor: primaryColor,
+              backgroundColor: Color(0xffd6d382),
               child: Icon(Icons.shop, size: 17.0, color: textColor),
             ),
           )

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/search/search_item.dart';
+import 'package:food_app/widgets/single_item.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -43,7 +43,8 @@ class _SearchState extends State<Search> {
             ),
           ),
           SizedBox(height: 10),
-          SearchItem(),
+          SingleItem(isBool: false),
+          SingleItem(isBool: false),
         ],
       ),
     );
