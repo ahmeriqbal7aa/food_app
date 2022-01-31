@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/product_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
 import 'package:food_app/screens/home/single_product.dart';
 import 'package:food_app/screens/productOverview/product_overview.dart';
 import 'package:food_app/screens/search/search.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,6 +13,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // Obj of ProductProvider Class
+  ProductProvider productProvider;
+
   /// TODO Herbs
   Widget _buildHerbsProduct(context) {
     return Column(
@@ -35,59 +40,27 @@ class _HomeScreenState extends State<HomeScreen> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Herb Basil",
+            children: productProvider.getHerbsProductDataList.map(
+              (herbsProductData) {
+                return SingleProduct(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductOverview(
+                          productImage: herbsProductData.productImage,
+                          productName: herbsProductData.productName,
+                          productPrice: herbsProductData.productPrice,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Herb Basil",
-              ),
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Herb Mint",
-                      ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Herb Mint",
-              ),
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Herb Rose",
-                      ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Herb Rose",
-              ),
-            ],
+                    );
+                  },
+                  productImage: herbsProductData.productImage,
+                  productName: herbsProductData.productName,
+                  productPrice: herbsProductData.productPrice,
+                );
+              },
+            ).toList(),
           ),
         )
       ],
@@ -118,59 +91,27 @@ class _HomeScreenState extends State<HomeScreen> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Fresh Basil",
+            children: productProvider.getFreshProductDataList.map(
+              (freshProductData) {
+                return SingleProduct(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductOverview(
+                          productImage: freshProductData.productImage,
+                          productName: freshProductData.productName,
+                          productPrice: freshProductData.productPrice,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Basil",
-              ),
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Fresh Mint",
-                      ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Mint",
-              ),
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Fresh Rose",
-                      ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Fresh Rose",
-              ),
-            ],
+                    );
+                  },
+                  productImage: freshProductData.productImage,
+                  productName: freshProductData.productName,
+                  productPrice: freshProductData.productPrice,
+                );
+              },
+            ).toList(),
           ),
         )
       ],
@@ -201,67 +142,48 @@ class _HomeScreenState extends State<HomeScreen> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Root Basil",
+            children: productProvider.getRootProductDataList.map(
+              (rootProductData) {
+                return SingleProduct(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductOverview(
+                          productImage: rootProductData.productImage,
+                          productName: rootProductData.productName,
+                          productPrice: rootProductData.productPrice,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Root Basil",
-              ),
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Root Mint",
-                      ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Root Mint",
-              ),
-              SingleProduct(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductOverview(
-                        productImage:
-                            "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                        productName: "Root Rose",
-                      ),
-                    ),
-                  );
-                },
-                productImage:
-                    "https://assets.stickpng.com/images/58bf1e2ae443f41d77c734ab.png",
-                productName: "Root Rose",
-              ),
-            ],
+                    );
+                  },
+                  productImage: rootProductData.productImage,
+                  productName: rootProductData.productName,
+                  productPrice: rootProductData.productPrice,
+                );
+              },
+            ).toList(),
           ),
         )
       ],
     );
   }
 
+  /// TODO Product Provider
+  @override
+  void initState() {
+    /// we write "listen: false" to avoid running "initState()" method only one time
+    /// when we "false" then "initState()" will run 2 or more times
+    ProductProvider productProvider = Provider.of(context, listen: false);
+    productProvider.fetchHerbsProductData();
+    productProvider.fetchFreshProductData();
+    productProvider.fetchRootProductData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    productProvider = Provider.of(context);
     return Scaffold(
       drawer: DrawerSide(),
 

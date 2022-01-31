@@ -6,7 +6,8 @@ enum SingInCharacter { fill, outline }
 class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
-  ProductOverview({this.productImage, this.productName});
+  final int productPrice;
+  ProductOverview({this.productImage, this.productName, this.productPrice});
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
 }
@@ -63,7 +64,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                 children: [
                   ListTile(
                     title: Text(widget.productName),
-                    subtitle: Text("\$50"),
+                    subtitle: Text("\$${widget.productPrice}"),
                   ),
                   Container(
                     height: 250,
@@ -105,7 +106,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                             ),
                           ],
                         ),
-                        Text("\$50"),
+                        Text("\$${widget.productPrice}"),
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 30, vertical: 10),

@@ -4,8 +4,10 @@ import 'package:food_app/config/colors.dart';
 class SingleProduct extends StatefulWidget {
   final String productImage;
   final String productName;
+  final int productPrice;
   final Function onTap;
-  SingleProduct({this.productImage, this.productName, this.onTap});
+  SingleProduct(
+      {this.productImage, this.productName, this.onTap, this.productPrice});
   @override
   _SingleProductState createState() => _SingleProductState();
 }
@@ -50,7 +52,7 @@ class _SingleProductState extends State<SingleProduct> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text("50\$/50 Grams",
+                        Text("${widget.productPrice}\$/50 Grams",
                             style: TextStyle(
                               color: Colors.black54,
                               fontWeight: FontWeight.bold,
