@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
 
+// ignore: must_be_immutable
 class MyProfile extends StatefulWidget {
+  UserProvider userProvider;
+  MyProfile({this.userProvider});
   @override
   _MyProfileState createState() => _MyProfileState();
 }
@@ -23,9 +27,11 @@ class _MyProfileState extends State<MyProfile> {
 
   @override
   Widget build(BuildContext context) {
+    var userData = widget.userProvider.getCurrentUserData;
+
     return Scaffold(
       backgroundColor: primaryColor,
-      drawer: DrawerSide(),
+      drawer: DrawerSide(userProvider: widget.userProvider),
 
       /// TODO AppBar
       appBar: AppBar(
@@ -70,7 +76,7 @@ class _MyProfileState extends State<MyProfile> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Ahmer Iqbal",
+                                    userData.userName,
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -78,7 +84,7 @@ class _MyProfileState extends State<MyProfile> {
                                     ),
                                   ),
                                   SizedBox(height: 10),
-                                  Text("domain@gmail.com"),
+                                  Text(userData.userEmail),
                                 ],
                               ),
                               CircleAvatar(
@@ -129,7 +135,8 @@ class _MyProfileState extends State<MyProfile> {
                 radius: 45,
                 backgroundColor: scaffoldBackgroundColor,
                 backgroundImage: NetworkImage(
-                  "https://s3.envato.com/files/328957910/vegi_thumb.png",
+                  userData.userImage ??
+                      "https://s3.envato.com/files/328957910/vegi_thumb.png",
                 ),
               ),
             ),

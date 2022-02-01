@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/product_provider.dart';
+import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
 import 'package:food_app/screens/home/single_product.dart';
 import 'package:food_app/screens/productOverview/product_overview.dart';
@@ -15,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // Obj of ProductProvider Class
   ProductProvider productProvider;
+  // Obj of UserProvider Class
+  UserProvider userProvider;
 
   /// TODO Herbs
   Widget _buildHerbsProduct(context) {
@@ -207,9 +210,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /// TODO Providers
     productProvider = Provider.of(context);
+    userProvider = Provider.of(context);
+    userProvider.fetchUserData();
     return Scaffold(
-      drawer: DrawerSide(),
+      drawer: DrawerSide(userProvider: userProvider),
 
       /// TODO AppBar
       appBar: AppBar(

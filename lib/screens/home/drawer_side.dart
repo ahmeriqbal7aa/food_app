@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/home_screen.dart';
 import 'package:food_app/screens/home/my_profile.dart';
 import 'package:food_app/screens/reviewCart/review_cart.dart';
+import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class DrawerSide extends StatefulWidget {
+  UserProvider userProvider;
+  DrawerSide({this.userProvider});
   @override
   _DrawerSideState createState() => _DrawerSideState();
 }
@@ -23,6 +28,7 @@ class _DrawerSideState extends State<DrawerSide> {
 
   @override
   Widget build(BuildContext context) {
+    var userData = widget.userProvider.getCurrentUserData;
     return Drawer(
       child: Container(
         color: primaryColor,
@@ -40,7 +46,8 @@ class _DrawerSideState extends State<DrawerSide> {
                         radius: 40.0,
                         backgroundColor: primaryColor,
                         backgroundImage: NetworkImage(
-                          "https://s3.envato.com/files/328957910/vegi_thumb.png",
+                          userData.userImage ??
+                              "https://s3.envato.com/files/328957910/vegi_thumb.png",
                         ),
                       ),
                     ),
@@ -49,24 +56,17 @@ class _DrawerSideState extends State<DrawerSide> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("User Name"),
-                        SizedBox(height: 7.0),
-                        Container(
-                          height: 30.0,
-                          // ignore: deprecated_member_use
-                          child: OutlineButton(
-                            child: Text("Login"),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(userData.userName),
+                            Text(
+                              userData.userEmail,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            borderSide: BorderSide(width: 2),
-                            onPressed: () {},
-                          ),
+                          ],
                         )
-                        // Text(
-                        //   "User Email",
-                        //   overflow: TextOverflow.ellipsis,
-                        // ),
                       ],
                     )
                   ],
@@ -94,7 +94,10 @@ class _DrawerSideState extends State<DrawerSide> {
             listTile(
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => MyProfile()),
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MyProfile(userProvider: widget.userProvider),
+                  ),
                 );
               },
               iconData: Icons.person_outlined,
