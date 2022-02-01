@@ -5,6 +5,7 @@ import 'package:food_app/models/product_model.dart';
 class ProductProvider with ChangeNotifier {
   // Obj of ProductModel Class
   ProductModel productModel;
+  List<ProductModel> homeScreenSearchBarList = [];
   // Making a Function to avoid writing same code again and again
   productModelsMethod(QueryDocumentSnapshot queryDocumentSnapshot) {
     productModel = ProductModel(
@@ -12,6 +13,7 @@ class ProductProvider with ChangeNotifier {
       productName: queryDocumentSnapshot.get("productName"),
       productPrice: queryDocumentSnapshot.get("productPrice"),
     );
+    homeScreenSearchBarList.add(productModel);
   }
 
   /// ///////////////// HerbsProduct ///////////////////////////
@@ -84,5 +86,10 @@ class ProductProvider with ChangeNotifier {
   // get from list
   List<ProductModel> get getRootProductDataList {
     return rootProductList;
+  }
+
+  /// ///////////////// Search Return ///////////////////////////
+  List<ProductModel> get getAllProductSearch {
+    return homeScreenSearchBarList;
   }
 }

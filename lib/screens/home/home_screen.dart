@@ -28,9 +28,17 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text('Herbs Seasonings'),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          Search(list: productProvider.getHerbsProductDataList),
+                    ),
+                  );
+                },
                 child: Text(
-                  'view all',
+                  'View All',
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
@@ -79,9 +87,17 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text('Fresh Fruits'),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          Search(list: productProvider.getFreshProductDataList),
+                    ),
+                  );
+                },
                 child: Text(
-                  'view all',
+                  'View All',
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
@@ -130,9 +146,17 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text('Root Vegetable'),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          Search(list: productProvider.getRootProductDataList),
+                    ),
+                  );
+                },
                 child: Text(
-                  'view all',
+                  'View All',
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
@@ -200,7 +224,10 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Search()),
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        Search(list: productProvider.getAllProductSearch),
+                  ),
                 );
               },
               child: Icon(Icons.search, size: 17.0, color: textColor),
