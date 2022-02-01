@@ -3,6 +3,7 @@ import 'package:food_app/auth/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/product_provider.dart';
+import 'package:food_app/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -14,8 +15,18 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ProductProvider(),
+    return MultiProvider(
+      providers: [
+        /// Product Provider
+        ChangeNotifierProvider<ProductProvider>(
+          create: (context) => ProductProvider(),
+        ),
+
+        /// User Provider
+        ChangeNotifierProvider<UserProvider>(
+          create: (context) => UserProvider(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
