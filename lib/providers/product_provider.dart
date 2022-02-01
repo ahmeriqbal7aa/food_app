@@ -5,6 +5,14 @@ import 'package:food_app/models/product_model.dart';
 class ProductProvider with ChangeNotifier {
   // Obj of ProductModel Class
   ProductModel productModel;
+  // Making a Function to avoid writing same code again and again
+  productModelsMethod(QueryDocumentSnapshot queryDocumentSnapshot) {
+    productModel = ProductModel(
+      productImage: queryDocumentSnapshot.get("productImage"),
+      productName: queryDocumentSnapshot.get("productName"),
+      productPrice: queryDocumentSnapshot.get("productPrice"),
+    );
+  }
 
   /// ///////////////// HerbsProduct ///////////////////////////
   List<ProductModel> herbsProductList = [];
@@ -16,11 +24,7 @@ class ProductProvider with ChangeNotifier {
     value.docs.forEach(
       (val) {
         print(val.data());
-        productModel = ProductModel(
-          productImage: val.get("productImage"),
-          productName: val.get("productName"),
-          productPrice: val.get("productPrice"),
-        );
+        productModelsMethod(val);
         newList.add(productModel);
       },
     );
@@ -44,11 +48,7 @@ class ProductProvider with ChangeNotifier {
     value.docs.forEach(
       (val) {
         print(val.data());
-        productModel = ProductModel(
-          productImage: val.get("productImage"),
-          productName: val.get("productName"),
-          productPrice: val.get("productPrice"),
-        );
+        productModelsMethod(val);
         newList.add(productModel);
       },
     );
@@ -72,11 +72,7 @@ class ProductProvider with ChangeNotifier {
     value.docs.forEach(
       (val) {
         print(val.data());
-        productModel = ProductModel(
-          productImage: val.get("productImage"),
-          productName: val.get("productName"),
-          productPrice: val.get("productPrice"),
-        );
+        productModelsMethod(val);
         newList.add(productModel);
       },
     );
