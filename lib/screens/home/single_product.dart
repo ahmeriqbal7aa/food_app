@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/widgets/count.dart';
 
 class SingleProduct extends StatefulWidget {
   final String productImage;
@@ -45,6 +46,7 @@ class _SingleProductState extends State<SingleProduct> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        /// Name
                         Text(
                           widget.productName,
                           style: TextStyle(
@@ -52,12 +54,16 @@ class _SingleProductState extends State<SingleProduct> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+
+                        /// Price
                         Text("${widget.productPrice}\$/50 Grams",
                             style: TextStyle(
                               color: Colors.black54,
                               fontWeight: FontWeight.bold,
                             )),
                         SizedBox(height: 5),
+
+                        /// Buttons
                         Row(
                           children: [
                             Expanded(
@@ -90,40 +96,7 @@ class _SingleProductState extends State<SingleProduct> {
                               ),
                             ),
                             SizedBox(width: 5),
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.only(left: 5.0),
-                                height: 30.0,
-                                width: 50.0,
-                                // ignore: deprecated_member_use
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  border: Border.all(color: Colors.grey),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.remove,
-                                      size: 15.0,
-                                      color: primaryColor,
-                                    ),
-                                    Text(
-                                      "1",
-                                      style: TextStyle(
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.add,
-                                      size: 15.0,
-                                      color: primaryColor,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                            Count()
                           ],
                         ),
                       ],
