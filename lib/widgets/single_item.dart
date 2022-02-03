@@ -5,6 +5,7 @@ import 'package:food_app/config/colors.dart';
 // ignore: must_be_immutable
 class SingleItem extends StatelessWidget {
   bool isBool = false;
+  bool wishList = false;
   final String productImage;
   final String productName;
   final String productId;
@@ -13,6 +14,7 @@ class SingleItem extends StatelessWidget {
   Function onDelete;
   SingleItem({
     this.isBool,
+    this.wishList,
     this.productImage,
     this.productName,
     this.productId,
@@ -93,7 +95,7 @@ class SingleItem extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : Text("1 kg")
+                          : Text("50 Gram")
                     ],
                   ),
                 ),
@@ -139,25 +141,30 @@ class SingleItem extends StatelessWidget {
                               SizedBox(height: 5.0),
 
                               /// Button
-                              Container(
-                                height: 25.0,
-                                width: 50.0,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.remove,
-                                        size: 20, color: primaryColor),
-                                    Text("1",
-                                        style: TextStyle(color: primaryColor)),
-                                    Icon(Icons.add,
-                                        size: 15.0, color: primaryColor),
-                                  ],
-                                ),
-                              )
+                              wishList == false
+                                  ? Container(
+                                      height: 25.0,
+                                      width: 50.0,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.remove,
+                                              size: 20, color: primaryColor),
+                                          Text("1",
+                                              style: TextStyle(
+                                                  color: primaryColor)),
+                                          Icon(Icons.add,
+                                              size: 15.0, color: primaryColor),
+                                        ],
+                                      ),
+                                    )
+                                  : Container()
                             ],
                           ),
                         ),

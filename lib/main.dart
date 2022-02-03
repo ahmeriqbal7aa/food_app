@@ -5,6 +5,7 @@ import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/product_provider.dart';
 import 'package:food_app/providers/reviewcart_provider.dart';
 import 'package:food_app/providers/user_provider.dart';
+import 'package:food_app/providers/wishlist_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -31,6 +32,11 @@ class MyApp extends StatelessWidget {
         /// ReviewCart Provider
         ChangeNotifierProvider<ReviewCartProvider>(
           create: (context) => ReviewCartProvider(),
+        ),
+
+        /// WishList Provider
+        ChangeNotifierProvider<WishListProvider>(
+          create: (context) => WishListProvider(),
         ),
       ],
       child: MaterialApp(

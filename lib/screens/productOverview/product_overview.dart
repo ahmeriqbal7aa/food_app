@@ -1,13 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/providers/wishlist_provider.dart';
+import 'package:provider/provider.dart';
 
 enum SingInCharacter { fill, outline }
 
 class ProductOverview extends StatefulWidget {
   final String productName;
   final String productImage;
+  final String productId;
   final int productPrice;
-  ProductOverview({this.productImage, this.productName, this.productPrice});
+  ProductOverview({
+    this.productImage,
+    this.productName,
+    this.productId,
+    this.productPrice,
+  });
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
 }
@@ -43,8 +53,38 @@ class _ProductOverviewState extends State<ProductOverview> {
     );
   }
 
+  // Obj of WishListProvider Class
+  WishListProvider wishListProvider;
+  bool wishListBool = false;
+
+  /// TODO Method
+  getWishListBool() {
+    FirebaseFirestore.instance
+        .collection("WishList")
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .collection("YourWishList")
+        .doc(widget.productId)
+        .get()
+        .then((value) => {
+              // due to "this.mounted" we will
+              // use "setState" inside "then" function
+              // to avoid debugging error
+              if (this.mounted)
+                {
+                  if (value.exists)
+                    {
+                      setState(() {
+                        wishListBool = value.get("wishList");
+                      }),
+                    }
+                }
+            });
+  }
+
   @override
   Widget build(BuildContext context) {
+    wishListProvider = Provider.of(context);
+    getWishListBool();
     return Scaffold(
       /// TODO AppBar
       appBar: AppBar(
@@ -158,12 +198,29 @@ class _ProductOverviewState extends State<ProductOverview> {
       bottomNavigationBar: Row(
         children: [
           bottomNavigatorBar(
-            color: Colors.white70,
-            backgroundColor: textColor,
-            iconColor: Colors.grey,
-            title: "Add to WishList",
-            iconData: Icons.favorite_outline,
-          ),
+              color: Colors.white70,
+              backgroundColor: textColor,
+              iconColor: Colors.grey,
+              title: "Add to WishList",
+              iconData: wishListBool == false
+                  ? Icons.favorite_outline
+                  : Icons.favorite,
+              onTap: () {
+                setState(() {
+                  wishListBool = !wishListBool;
+                });
+                if (wishListBool == true) {
+                  wishListProvider.addWishListData(
+                    wishListId: widget.productId,
+                    wishListName: widget.productName,
+                    wishListImage: widget.productImage,
+                    wishListPrice: widget.productPrice,
+                    wishListQuantity: 2,
+                  );
+                } else {
+                  wishListProvider.wishListDataDelete(widget.productId);
+                }
+              }),
           bottomNavigatorBar(
             color: textColor,
             backgroundColor: primaryColor,

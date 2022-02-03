@@ -4,6 +4,7 @@ import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/home_screen.dart';
 import 'package:food_app/screens/home/my_profile.dart';
 import 'package:food_app/screens/reviewCart/review_cart.dart';
+import 'package:food_app/screens/wishList/wish_list.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
@@ -107,9 +108,16 @@ class _DrawerSideState extends State<DrawerSide> {
                 iconData: Icons.notifications_outlined, title: "Notification"),
             listTile(iconData: Icons.star_outline, title: "Rating & Review"),
             listTile(
-                iconData: Icons.favorite_outline,
-                title: "WishList",
-                onTap: () {}),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => WishList(),
+                  ),
+                );
+              },
+              iconData: Icons.favorite_outline,
+              title: "WishList",
+            ),
             listTile(iconData: Icons.copy_outlined, title: "Raise a Complaint"),
             listTile(iconData: Icons.format_quote_outlined, title: "FAQs"),
             Container(
