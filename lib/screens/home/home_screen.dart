@@ -66,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
+                  productId: herbsProductData.productId,
                   productImage: herbsProductData.productImage,
                   productName: herbsProductData.productName,
                   productPrice: herbsProductData.productPrice,
@@ -125,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
+                  productId: freshProductData.productId,
                   productImage: freshProductData.productImage,
                   productName: freshProductData.productName,
                   productPrice: freshProductData.productPrice,
@@ -184,6 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
+                  productId: rootProductData.productId,
                   productImage: rootProductData.productImage,
                   productName: rootProductData.productName,
                   productPrice: rootProductData.productPrice,

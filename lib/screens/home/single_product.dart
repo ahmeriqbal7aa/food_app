@@ -5,10 +5,16 @@ import 'package:food_app/widgets/count.dart';
 class SingleProduct extends StatefulWidget {
   final String productImage;
   final String productName;
+  final String productId;
   final int productPrice;
   final Function onTap;
-  SingleProduct(
-      {this.productImage, this.productName, this.onTap, this.productPrice});
+  SingleProduct({
+    this.productImage,
+    this.productName,
+    this.productId,
+    this.onTap,
+    this.productPrice,
+  });
   @override
   _SingleProductState createState() => _SingleProductState();
 }
@@ -96,7 +102,12 @@ class _SingleProductState extends State<SingleProduct> {
                               ),
                             ),
                             SizedBox(width: 5),
-                            Count()
+                            Count(
+                              productId: widget.productId,
+                              productImage: widget.productImage,
+                              productName: widget.productName,
+                              productPrice: widget.productPrice,
+                            ),
                           ],
                         ),
                       ],

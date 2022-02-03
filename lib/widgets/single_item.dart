@@ -7,9 +7,19 @@ class SingleItem extends StatelessWidget {
   bool isBool = false;
   final String productImage;
   final String productName;
+  final String productId;
+  final int productQuantity;
   final int productPrice;
-  SingleItem(
-      {this.isBool, this.productImage, this.productName, this.productPrice});
+  Function onDelete;
+  SingleItem({
+    this.isBool,
+    this.productImage,
+    this.productName,
+    this.productId,
+    this.productQuantity,
+    this.productPrice,
+    this.onDelete,
+  });
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -113,29 +123,43 @@ class SingleItem extends StatelessWidget {
                             ],
                           ),
                         )
-                      : Column(
-                          children: [
-                            Icon(Icons.delete,
-                                size: 30.0, color: Colors.black54),
-                            SizedBox(height: 5.0),
-                            Container(
-                              height: 25.0,
-                              width: 50.0,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(30.0),
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Column(
+                            children: [
+                              /// Delete
+                              GestureDetector(
+                                onTap: onDelete,
+                                child: Icon(
+                                  Icons.delete,
+                                  size: 30.0,
+                                  color: Colors.black54,
+                                ),
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.add,
-                                      size: 15.0, color: primaryColor),
-                                  Text("ADD",
-                                      style: TextStyle(color: primaryColor)),
-                                ],
-                              ),
-                            )
-                          ],
+                              SizedBox(height: 5.0),
+
+                              /// Button
+                              Container(
+                                height: 25.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.remove,
+                                        size: 20, color: primaryColor),
+                                    Text("1",
+                                        style: TextStyle(color: primaryColor)),
+                                    Icon(Icons.add,
+                                        size: 15.0, color: primaryColor),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                 ),
               ),

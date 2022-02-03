@@ -3,6 +3,7 @@ import 'package:food_app/auth/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/product_provider.dart';
+import 'package:food_app/providers/reviewcart_provider.dart';
 import 'package:food_app/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,11 @@ class MyApp extends StatelessWidget {
         /// User Provider
         ChangeNotifierProvider<UserProvider>(
           create: (context) => UserProvider(),
+        ),
+
+        /// ReviewCart Provider
+        ChangeNotifierProvider<ReviewCartProvider>(
+          create: (context) => ReviewCartProvider(),
         ),
       ],
       child: MaterialApp(

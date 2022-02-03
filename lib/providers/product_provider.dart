@@ -12,6 +12,7 @@ class ProductProvider with ChangeNotifier {
       productImage: queryDocumentSnapshot.get("productImage"),
       productName: queryDocumentSnapshot.get("productName"),
       productPrice: queryDocumentSnapshot.get("productPrice"),
+      productId: queryDocumentSnapshot.get("productId"),
     );
     homeScreenSearchBarList.add(productModel);
   }
@@ -47,13 +48,11 @@ class ProductProvider with ChangeNotifier {
     List<ProductModel> newList = [];
     QuerySnapshot value =
         await FirebaseFirestore.instance.collection("FreshProduct").get();
-    value.docs.forEach(
-      (val) {
-        print(val.data());
-        productModelsMethod(val);
-        newList.add(productModel);
-      },
-    );
+    value.docs.forEach((val) {
+      print(val.data());
+      productModelsMethod(val);
+      newList.add(productModel);
+    });
     freshProductList = newList;
     // "notifyListeners" same mean as "setState"
     notifyListeners();
@@ -71,13 +70,11 @@ class ProductProvider with ChangeNotifier {
     List<ProductModel> newList = [];
     QuerySnapshot value =
         await FirebaseFirestore.instance.collection("RootProduct").get();
-    value.docs.forEach(
-      (val) {
-        print(val.data());
-        productModelsMethod(val);
-        newList.add(productModel);
-      },
-    );
+    value.docs.forEach((val) {
+      print(val.data());
+      productModelsMethod(val);
+      newList.add(productModel);
+    });
     rootProductList = newList;
     // "notifyListeners" same mean as "setState"
     notifyListeners();
