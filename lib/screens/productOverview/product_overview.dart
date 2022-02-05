@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/wishlist_provider.dart';
+import 'package:food_app/screens/reviewCart/review_cart.dart';
+import 'package:food_app/widgets/count.dart';
 import 'package:provider/provider.dart';
 
 enum SingInCharacter { fill, outline }
@@ -83,7 +85,7 @@ class _ProductOverviewState extends State<ProductOverview> {
 
   @override
   Widget build(BuildContext context) {
-    wishListProvider = Provider.of(context);
+    wishListProvider = Provider.of<WishListProvider>(context);
     getWishListBool();
     return Scaffold(
       /// TODO AppBar
@@ -126,7 +128,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
@@ -146,22 +148,30 @@ class _ProductOverviewState extends State<ProductOverview> {
                             ),
                           ],
                         ),
+                        SizedBox(width: 95.0),
                         Text("\$${widget.productPrice}"),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.add, size: 17, color: primaryColor),
-                              Text("ADD", style: TextStyle(color: primaryColor))
-                            ],
-                          ),
+                        SizedBox(width: 95.0),
+                        Count(
+                          productId: widget.productId,
+                          productImage: widget.productImage,
+                          productName: widget.productName,
+                          productPrice: widget.productPrice,
                         ),
+                        // Container(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal: 30, vertical: 10),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Colors.grey),
+                        //     borderRadius: BorderRadius.circular(30),
+                        //   ),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.center,
+                        //     children: [
+                        //       Icon(Icons.add, size: 17, color: primaryColor),
+                        //       Text("ADD", style: TextStyle(color: primaryColor))
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                   )
@@ -222,12 +232,15 @@ class _ProductOverviewState extends State<ProductOverview> {
                 }
               }),
           bottomNavigatorBar(
-            color: textColor,
-            backgroundColor: primaryColor,
-            iconColor: Colors.white70,
-            title: "Go To Cart",
-            iconData: Icons.shop_outlined,
-          )
+              color: textColor,
+              backgroundColor: primaryColor,
+              iconColor: Colors.white70,
+              title: "Go To Cart",
+              iconData: Icons.shop_outlined,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ReviewCart()));
+              })
         ],
       ),
     );

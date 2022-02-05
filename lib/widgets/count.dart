@@ -60,7 +60,7 @@ class _CountState extends State<Count> {
 
   @override
   Widget build(BuildContext context) {
-    reviewCartProvider = Provider.of(context);
+    reviewCartProvider = Provider.of<ReviewCartProvider>(context);
     return Expanded(
       child: Container(
         height: 30.0,

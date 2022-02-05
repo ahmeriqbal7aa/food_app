@@ -5,6 +5,7 @@ import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
 import 'package:food_app/screens/home/single_product.dart';
 import 'package:food_app/screens/productOverview/product_overview.dart';
+import 'package:food_app/screens/reviewCart/review_cart.dart';
 import 'package:food_app/screens/search/search.dart';
 import 'package:provider/provider.dart';
 
@@ -250,7 +251,13 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CircleAvatar(
               radius: 12,
               backgroundColor: Color(0xffd6d382),
-              child: Icon(Icons.shop, size: 17.0, color: textColor),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ReviewCart()));
+                },
+                child: Icon(Icons.shop, size: 17.0, color: textColor),
+              ),
             ),
           )
         ],

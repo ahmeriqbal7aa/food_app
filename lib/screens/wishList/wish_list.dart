@@ -55,7 +55,7 @@ class _WishListState extends State<WishList> {
 
   @override
   Widget build(BuildContext context) {
-    wishListProvider = Provider.of(context);
+    wishListProvider = Provider.of<WishListProvider>(context);
     wishListProvider.fetchWishListData();
     return Scaffold(
       /// TODO AppBar
