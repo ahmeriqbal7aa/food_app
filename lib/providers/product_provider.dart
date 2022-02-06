@@ -9,10 +9,11 @@ class ProductProvider with ChangeNotifier {
   // Making a Function to avoid writing same code again and again
   productModelsMethod(QueryDocumentSnapshot queryDocumentSnapshot) {
     productModel = ProductModel(
+      productId: queryDocumentSnapshot.get("productId"),
       productImage: queryDocumentSnapshot.get("productImage"),
       productName: queryDocumentSnapshot.get("productName"),
       productPrice: queryDocumentSnapshot.get("productPrice"),
-      productId: queryDocumentSnapshot.get("productId"),
+      productUnit: queryDocumentSnapshot.get("productUnit"),
     );
     homeScreenSearchBarList.add(productModel);
   }

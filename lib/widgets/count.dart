@@ -146,6 +146,7 @@ class _CountState extends State<Count> {
                       cartName: widget.productName,
                       cartPrice: widget.productPrice,
                       cartQuantity: count,
+                      cartUnit: widget.productUnit,
                     );
                   },
                   child: Text("ADD", style: TextStyle(color: primaryColor)),

@@ -15,7 +15,9 @@ class SingleItem extends StatefulWidget {
   final String productId;
   final int productQuantity;
   final int productPrice;
+  var productUnit;
   Function onDelete;
+
   SingleItem({
     this.isBool,
     this.wishList,
@@ -24,6 +26,7 @@ class SingleItem extends StatefulWidget {
     this.productId,
     this.productQuantity,
     this.productPrice,
+    this.productUnit,
     this.onDelete,
   });
 
@@ -157,7 +160,7 @@ class _SingleItemState extends State<SingleItem> {
                                 ),
                               ),
                             )
-                          : Text("50 Gram")
+                          : Text(widget.productUnit)
                     ],
                   ),
                 ),
