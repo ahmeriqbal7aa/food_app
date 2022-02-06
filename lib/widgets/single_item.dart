@@ -35,10 +35,10 @@ class SingleItem extends StatefulWidget {
 }
 
 class _SingleItemState extends State<SingleItem> {
-  // Obj of ReviewCartProvider Class
+  /// Obj of ReviewCartProvider Class
   ReviewCartProvider reviewCartProvider;
 
-  // Method
+  /// TODO Method
   int count;
   getCount() {
     setState(() {

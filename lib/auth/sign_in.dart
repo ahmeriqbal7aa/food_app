@@ -13,7 +13,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  // Obj of UserProvider Class
+  /// Obj of UserProvider Class
   UserProvider userProvider;
 
   /// TODO Google Authentication

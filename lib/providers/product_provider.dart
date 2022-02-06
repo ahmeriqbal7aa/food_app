@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:food_app/models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
-  // Obj of ProductModel Class
+  /// Obj of ProductModel Class
   ProductModel productModel;
   List<ProductModel> homeScreenSearchBarList = [];
-  // Making a Function to avoid writing same code again and again
+
+  /// Making a Function to avoid writing same code again and again
   productModelsMethod(QueryDocumentSnapshot queryDocumentSnapshot) {
     productModel = ProductModel(
       productId: queryDocumentSnapshot.get("productId"),
@@ -22,6 +23,7 @@ class ProductProvider with ChangeNotifier {
   List<ProductModel> herbsProductList = [];
   // fetch from Firebase
   fetchHerbsProductData() async {
+    // we create "newList" to avoid product display double
     List<ProductModel> newList = [];
     QuerySnapshot value =
         await FirebaseFirestore.instance.collection("HerbsProduct").get();
@@ -64,7 +66,7 @@ class ProductProvider with ChangeNotifier {
     return freshProductList;
   }
 
-  /// ///////////////// FreshProduct ///////////////////////////
+  /// ///////////////// RootProduct ///////////////////////////
   List<ProductModel> rootProductList = [];
   // fetch from Firebase
   fetchRootProductData() async {

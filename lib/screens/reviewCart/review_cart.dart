@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class ReviewCart extends StatelessWidget {
-  // Obj of ReviewCartProvider Class
+  /// Obj of ReviewCartProvider Class
   ReviewCartProvider reviewCartProvider;
 
   /// TODO Alert Dialogue

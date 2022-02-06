@@ -24,7 +24,7 @@ class Count extends StatefulWidget {
 }
 
 class _CountState extends State<Count> {
-  // Obj of ReviewCartProvider Class
+  /// Obj of ReviewCartProvider Class
   ReviewCartProvider reviewCartProvider;
 
   /// TODO Variables
@@ -132,6 +132,8 @@ class _CountState extends State<Count> {
                   ),
                 ],
               )
+
+            /// TODO Add Button
             : Center(
                 child: InkWell(
                   onTap: () {

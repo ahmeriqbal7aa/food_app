@@ -15,9 +15,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Obj of ProductProvider Class
+  /// Obj of ProductProvider Class
   ProductProvider productProvider;
-  // Obj of UserProvider Class
+
+  /// Obj of UserProvider Class
   UserProvider userProvider;
 
   /// TODO Herbs
@@ -206,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  /// TODO Product Provider
+  /// TODO initState
   @override
   void initState() {
     /// we write "listen: false" to avoid running "initState()" method only one time
@@ -220,11 +221,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    /// TODO Providers
     productProvider = Provider.of(context);
     userProvider = Provider.of(context);
     userProvider.fetchUserData();
     return Scaffold(
+      /// TODO Drawer
       drawer: DrawerSide(userProvider: userProvider),
 
       /// TODO AppBar
@@ -271,6 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: ListView(
           children: [
+            /// Background Image
             Container(
               height: 150,
               decoration: BoxDecoration(
@@ -290,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       child: Column(
                         children: [
-                          // TODO Vegi Text
+                          /// Vegi Text
                           Padding(
                             padding:
                                 const EdgeInsets.only(right: 130, bottom: 10),
@@ -322,7 +324,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                          // TODO 30% Off
+
+                          /// 30% Off
                           Text(
                             '30% Off',
                             style: TextStyle(
@@ -331,7 +334,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          // TODO Description
+
+                          /// Description
                           Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: Text(

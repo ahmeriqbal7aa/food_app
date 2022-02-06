@@ -19,9 +19,12 @@ class ProductUnit extends StatelessWidget {
         ),
         child: Row(
           children: [
+            /// Unit Title
             Expanded(
               child: Text('$title', style: TextStyle(fontSize: 10.0)),
             ),
+
+            /// Unit Dropdown
             Center(
               child: Icon(Icons.arrow_drop_down, size: 20, color: primaryColor),
             )

@@ -31,6 +31,8 @@ class _MyProfileState extends State<MyProfile> {
 
     return Scaffold(
       backgroundColor: primaryColor,
+
+      /// TODO Drawer
       drawer: DrawerSide(userProvider: widget.userProvider),
 
       /// TODO AppBar
@@ -45,6 +47,7 @@ class _MyProfileState extends State<MyProfile> {
       /// TODO Body
       body: Stack(
         children: [
+          /// Name, Email, Edit Icon and Option's List
           Column(
             children: [
               Container(height: 100, color: primaryColor),
@@ -71,6 +74,7 @@ class _MyProfileState extends State<MyProfile> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              /// Name and Email
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,6 +91,8 @@ class _MyProfileState extends State<MyProfile> {
                                   Text(userData.userEmail),
                                 ],
                               ),
+
+                              /// Edit
                               CircleAvatar(
                                 radius: 15,
                                 backgroundColor: primaryColor,
@@ -101,20 +107,34 @@ class _MyProfileState extends State<MyProfile> {
                         ),
                       ],
                     ),
+
+                    /// My Orders
                     listTile(icon: Icons.shop_outlined, title: "My Orders"),
+
+                    /// My Delivery Address
                     listTile(
                       icon: Icons.location_on_outlined,
                       title: "My Delivery Address",
                     ),
+
+                    /// Refer a Friends
                     listTile(
-                        icon: Icons.person_outline, title: "Refer A Friends"),
+                        icon: Icons.person_outline, title: "Refer a Friends"),
+
+                    /// Terms & Conditions
                     listTile(
                       icon: Icons.file_copy_outlined,
                       title: "Terms & Conditions",
                     ),
+
+                    /// Privacy Policy
                     listTile(
                         icon: Icons.policy_outlined, title: "Privacy Policy"),
+
+                    /// About
                     listTile(icon: Icons.add_chart, title: "About"),
+
+                    /// Log Out
                     listTile(
                       icon: Icons.exit_to_app_outlined,
                       title: "Log Out",
@@ -125,7 +145,7 @@ class _MyProfileState extends State<MyProfile> {
             ],
           ),
 
-          /// TODO Profile Avatar
+          /// Profile Avatar
           Padding(
             padding: const EdgeInsets.only(top: 40, left: 30),
             child: CircleAvatar(
@@ -140,7 +160,7 @@ class _MyProfileState extends State<MyProfile> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -31,7 +31,7 @@ class WishListProvider with ChangeNotifier {
 
   /// Fetch WishList from Firebase
   List<ProductModel> wishList = [];
-
+  // fetch from firebase
   fetchWishListData() async {
     // we create "newList" to avoid product display double
     List<ProductModel> newList = [];

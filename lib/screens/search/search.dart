@@ -21,7 +21,7 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    // for suggestion, if now write otherwise it will not give suggestion
+    /// for suggestion, if we didn't write then it will not give suggestion
     List<ProductModel> _searchItem = searchItem(query);
     return Scaffold(
       /// TODO AppBar

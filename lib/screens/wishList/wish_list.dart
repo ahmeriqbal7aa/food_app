@@ -11,7 +11,7 @@ class WishList extends StatefulWidget {
 }
 
 class _WishListState extends State<WishList> {
-  // Obj of WishListProvider Class
+  /// Obj of WishListProvider Class
   WishListProvider wishListProvider;
 
   showAlertDialog(BuildContext context, ProductModel delete) {

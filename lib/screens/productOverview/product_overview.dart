@@ -55,7 +55,7 @@ class _ProductOverviewState extends State<ProductOverview> {
     );
   }
 
-  // Obj of WishListProvider Class
+  /// Obj of WishListProvider Class
   WishListProvider wishListProvider;
   bool wishListBool = false;
 
@@ -104,15 +104,20 @@ class _ProductOverviewState extends State<ProductOverview> {
               width: double.infinity,
               child: Column(
                 children: [
+                  /// Name and Price
                   ListTile(
                     title: Text(widget.productName),
                     subtitle: Text("\$${widget.productPrice}"),
                   ),
+
+                  /// Image
                   Container(
                     height: 250,
                     padding: EdgeInsets.all(40),
                     child: Image.network(widget.productImage ?? ""),
                   ),
+
+                  /// Available Options
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     width: double.infinity,
@@ -125,6 +130,8 @@ class _ProductOverviewState extends State<ProductOverview> {
                       ),
                     ),
                   ),
+
+                  /// Radio Button, Price and Add Button
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
@@ -156,6 +163,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                           productImage: widget.productImage,
                           productName: widget.productName,
                           productPrice: widget.productPrice,
+                          productUnit: '50 Gram',
                         ),
                         // Container(
                         //   padding: EdgeInsets.symmetric(
@@ -179,17 +187,22 @@ class _ProductOverviewState extends State<ProductOverview> {
               ),
             ),
           ),
+
+          /// About and Description
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20),
               width: double.infinity,
               child: ListView(
                 children: [
+                  /// About
                   Text(
                     "About This Product",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 20),
+
+                  /// Description
                   Text(
                     "In marketing, a product is an object or system made "
                     "available for consumer use; it is anything that can be "
@@ -207,40 +220,46 @@ class _ProductOverviewState extends State<ProductOverview> {
       /// TODO BottomNavigationBar
       bottomNavigationBar: Row(
         children: [
+          /// Add to WishList
           bottomNavigatorBar(
-              color: Colors.white70,
-              backgroundColor: textColor,
-              iconColor: Colors.grey,
-              title: "Add to WishList",
-              iconData: wishListBool == false
-                  ? Icons.favorite_outline
-                  : Icons.favorite,
-              onTap: () {
-                setState(() {
-                  wishListBool = !wishListBool;
-                });
-                if (wishListBool == true) {
-                  wishListProvider.addWishListData(
-                    wishListId: widget.productId,
-                    wishListName: widget.productName,
-                    wishListImage: widget.productImage,
-                    wishListPrice: widget.productPrice,
-                    wishListQuantity: 2,
-                  );
-                } else {
-                  wishListProvider.wishListDataDelete(widget.productId);
-                }
-              }),
+            color: Colors.white70,
+            backgroundColor: textColor,
+            iconColor: Colors.grey,
+            title: "Add to WishList",
+            iconData:
+                wishListBool == false ? Icons.favorite_outline : Icons.favorite,
+            onTap: () {
+              setState(() {
+                wishListBool = !wishListBool;
+              });
+              if (wishListBool == true) {
+                /// add
+                wishListProvider.addWishListData(
+                  wishListId: widget.productId,
+                  wishListName: widget.productName,
+                  wishListImage: widget.productImage,
+                  wishListPrice: widget.productPrice,
+                  wishListQuantity: 1,
+                );
+              } else {
+                /// delete
+                wishListProvider.wishListDataDelete(widget.productId);
+              }
+            },
+          ),
+
+          /// Go to Cart
           bottomNavigatorBar(
-              color: textColor,
-              backgroundColor: primaryColor,
-              iconColor: Colors.white70,
-              title: "Go To Cart",
-              iconData: Icons.shop_outlined,
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ReviewCart()));
-              })
+            color: textColor,
+            backgroundColor: primaryColor,
+            iconColor: Colors.white70,
+            title: "Go To Cart",
+            iconData: Icons.shop_outlined,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ReviewCart()));
+            },
+          )
         ],
       ),
     );

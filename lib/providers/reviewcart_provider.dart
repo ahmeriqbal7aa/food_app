@@ -58,8 +58,9 @@ class ReviewCartProvider with ChangeNotifier {
 
   /// Fetch ReviewCart from Firebase
   List<ReviewCartModel> reviewCartList = [];
-
+  // fetch from firebase
   fetchReviewCartData() async {
+    // we create "newList" to avoid product display double
     List<ReviewCartModel> newList = [];
     QuerySnapshot value = await FirebaseFirestore.instance
         .collection("ReviewCart")

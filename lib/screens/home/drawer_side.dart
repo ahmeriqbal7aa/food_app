@@ -5,7 +5,6 @@ import 'package:food_app/screens/home/home_screen.dart';
 import 'package:food_app/screens/home/my_profile.dart';
 import 'package:food_app/screens/reviewCart/review_cart.dart';
 import 'package:food_app/screens/wishList/wish_list.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class DrawerSide extends StatefulWidget {
@@ -35,6 +34,7 @@ class _DrawerSideState extends State<DrawerSide> {
         color: primaryColor,
         child: ListView(
           children: [
+            /// Header
             DrawerHeader(
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -74,6 +74,8 @@ class _DrawerSideState extends State<DrawerSide> {
                 ),
               ),
             ),
+
+            /// Home
             listTile(
               onTap: () {
                 Navigator.of(context).push(
@@ -83,6 +85,8 @@ class _DrawerSideState extends State<DrawerSide> {
               iconData: Icons.home_outlined,
               title: "Home",
             ),
+
+            /// Review Cart
             listTile(
               onTap: () {
                 Navigator.of(context).push(
@@ -92,6 +96,8 @@ class _DrawerSideState extends State<DrawerSide> {
               iconData: Icons.shop_outlined,
               title: "Review Cart",
             ),
+
+            /// My Profile
             listTile(
               onTap: () {
                 Navigator.of(context).push(
@@ -104,9 +110,15 @@ class _DrawerSideState extends State<DrawerSide> {
               iconData: Icons.person_outlined,
               title: "My Profile",
             ),
+
+            /// Notification
             listTile(
                 iconData: Icons.notifications_outlined, title: "Notification"),
+
+            /// Rating & Review
             listTile(iconData: Icons.star_outline, title: "Rating & Review"),
+
+            /// WishList
             listTile(
               onTap: () {
                 Navigator.of(context).push(
@@ -116,8 +128,14 @@ class _DrawerSideState extends State<DrawerSide> {
               iconData: Icons.favorite_outline,
               title: "WishList",
             ),
+
+            /// Raise a Complaint
             listTile(iconData: Icons.copy_outlined, title: "Raise a Complaint"),
+
+            /// FAQs
             listTile(iconData: Icons.format_quote_outlined, title: "FAQs"),
+
+            /// Contact Support
             Container(
               height: 350,
               padding: EdgeInsets.symmetric(horizontal: 20),

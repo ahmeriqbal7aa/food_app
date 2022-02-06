@@ -30,7 +30,7 @@ class _SingleProductState extends State<SingleProduct> {
 
   @override
   Widget build(BuildContext context) {
-    // this widget will display by default first index value of productUnit
+    /// this widget, by default, will display first index value of productUnit
     widget.productUnit.productUnit.firstWhere((firstIndexElement) {
       setState(() {
         firstValue = firstIndexElement;
@@ -52,6 +52,7 @@ class _SingleProductState extends State<SingleProduct> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// TODO Image
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Container(
@@ -61,6 +62,8 @@ class _SingleProductState extends State<SingleProduct> {
                     child: Image.network(widget.productImage),
                   ),
                 ),
+
+                /// TODO Name, Price, Dropdown and Add Button
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
