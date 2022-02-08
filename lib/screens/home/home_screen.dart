@@ -212,10 +212,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     /// we write "listen: false" to avoid running "initState()" method only one time
     /// when we "false" then "initState()" will run 2 or more times
-    ProductProvider productProvider = Provider.of(context, listen: false);
-    productProvider.fetchHerbsProductData();
-    productProvider.fetchFreshProductData();
-    productProvider.fetchRootProductData();
+    ProductProvider initProductProvider = Provider.of(context, listen: false);
+    initProductProvider.fetchHerbsProductData();
+    initProductProvider.fetchFreshProductData();
+    initProductProvider.fetchRootProductData();
     super.initState();
   }
 

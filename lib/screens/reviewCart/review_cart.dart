@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/models/reviewcart_model.dart';
 import 'package:food_app/providers/reviewcart_provider.dart';
+import 'package:food_app/screens/checkOut/deliveryDetails/delivery_details.dart';
 import 'package:food_app/widgets/single_item.dart';
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // ignore: must_be_immutable
 class ReviewCart extends StatelessWidget {
@@ -101,7 +103,13 @@ class ReviewCart extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             child: Text("Submit"),
-            onPressed: () {},
+            onPressed: () {
+              if (reviewCartProvider.getReviewCartDataList.isEmpty) {
+                return Fluttertoast.showToast(msg: "No Cart Data Found");
+              }
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DeliveryDetails()));
+            },
           ),
         ),
       ),
