@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:food_app/auth/sign_in.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/providers/user_provider.dart';
 import 'package:food_app/screens/home/drawer_side.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 // ignore: must_be_immutable
 class MyProfile extends StatefulWidget {
@@ -135,9 +139,22 @@ class _MyProfileState extends State<MyProfile> {
                     listTile(icon: Icons.add_chart, title: "About"),
 
                     /// Log Out
-                    listTile(
-                      icon: Icons.exit_to_app_outlined,
-                      title: "Log Out",
+                    GestureDetector(
+                      onTap: () async {
+                        final GoogleSignIn _googleSignIn = GoogleSignIn(
+                            clientId: FirebaseAuth.instance.currentUser.uid);
+                        await _googleSignIn.signOut().whenComplete(() {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignIn()),
+                          );
+                          Fluttertoast.showToast(msg: "Successfully Logout");
+                        });
+                      },
+                      child: listTile(
+                        icon: Icons.exit_to_app_outlined,
+                        title: "Log Out",
+                      ),
                     ),
                   ],
                 ),
